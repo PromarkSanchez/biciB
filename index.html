@@ -42,11 +42,24 @@
         <section id="servicios" class="page-section hidden">
             <h2 class="animate-on-scroll">Nuestros Servicios de Vanguardia</h2>
             <div class="bento-grid">
-                <!-- <<== CORRECCIÓN: EL CHATBOT ESTÁ AHORA DENTRO DEL GRID ==>> -->
                 <div class="bento-box large animate-on-scroll">
-                    <h3>Chatbots con IA Multi-agente</h3>
-                    <!-- Botpress se inyectará aquí -->
-                    <div id="chatbot-wrapper"></div> 
+                    <!-- Contenido del Chatbot -->
+                    <div class="chat-header">
+                        <img src="img/atiq_logo.svg" alt="Atiq Logo">
+                        <div class="chat-title">
+                            <h3>Asistente Virtual Atiq</h3>
+                            <span>✨ Conectado</span>
+                        </div>
+                    </div>
+                    <div id="chat-messages" class="chat-messages">
+                        <!-- Los mensajes del chat se agregarán aquí dinámicamente -->
+                    </div>
+                    <form id="chat-form" class="chat-input-area">
+                        <input type="text" id="chat-input" placeholder="Escribe tu pregunta..." autocomplete="off">
+                        <button type="submit" aria-label="Enviar mensaje">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                        </button>
+                    </form>
                 </div>
                 <div class="bento-box animate-on-scroll" data-tilt data-tilt-max="5">
                     <h3>Análisis Facial y de Asistencia</h3>
@@ -85,12 +98,8 @@
     <!-- LIBRERÍAS Y SCRIPT PRINCIPAL -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
-    <script src="https://cdn.botpress.cloud/webchat/v1/inject.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
-    <script src="js/main.js"></script>
-    
-    <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" defer></script>
-    <script src="https://files.bpcontent.cloud/2025/07/30/23/20250730230628-6N33LX34.js" defer></script>
+    <script src="js/main.js" type="module"></script>
     
 
  
