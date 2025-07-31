@@ -25,7 +25,7 @@ h2 { font-size: 2.8rem; margin-bottom: 50px; text-shadow: 0 0 10px rgba(226, 132
 #video { transform: scaleX(-1); max-width: 100%; height: auto; }
 #canvas { position: absolute; top: 0; left: 0; }
 #loading-message, #results-container { font-size: 1.2rem; color: var(--color-naranja-vibrante); text-align: center; min-height: 25px; padding: 10px; background-color: rgba(0,0,0,0.5); border-radius: 5px; }
-.page-section { width: 100%; min-height: 100vh; display: none; flex-direction: column; justify-content: center; align-items: center; padding: 100px 5%; text-align: center; }
+.page-section { width: 100%; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 100px 5%; text-align: center; }
 .mission-text { max-width: 700px; font-size: 1.5rem; line-height: 1.6; }
 .bento-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; width: 100%; max-width: 1200px; }
 .bento-box { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 20px; padding: 30px; text-align: left; transition: transform 0.3s ease; }
