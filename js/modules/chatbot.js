@@ -8,12 +8,12 @@ async function callChatApi(elements, state, messageText) {
     chatMessages.scrollTop = chatMessages.scrollHeight;
 
     try {
-        const response = await fetch('URL_DE_TU_API/api/v1/chat/', { // <-- REEMPLAZA URL
+        const response = await fetch('http://localhost:8000/api/v1/chat/', { // <-- REEMPLAZA URL
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'X-API-Key': 'TU_API_KEY', // <-- REEMPLAZA
-                'X-Application-ID': 'TU_APP_ID' // <-- REEMPLAZA
+                'X-API-Key': 'uGwxnNYEHxObraMxqGL0jaPWcB3vZPzMkXUzm5IrfuI', // <-- REEMPLAZA
+                'X-Application-ID': 'WEB_MATE_BASICA' // <-- REEMPLAZA
             },
             body: JSON.stringify({
                 message: messageText,
