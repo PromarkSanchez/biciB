@@ -9,108 +9,63 @@
 <body>
 
     <div id="canvas-container"></div>
-
     <main class="content">
 
-        <!-- BOTÓN DE VOLVER (Oculto por defecto) -->
         <a href="#" id="back-to-home-btn" class="hidden">
-            <!-- Usamos un SVG para un icono nítido y ligero -->
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
         </a>
 
-        <!-- HERO SECTION -->
         <div class="hero-section">
-            <h1>Innovación que te reconoce.</h1>
-            <p class="welcome-message"><span id="atiq-char">🦊</span> ¡Hola! Soy Atiq. ¿Listo para ver el futuro?</p>
+             <div class="hero-logo-container">
+                <img src="img/atiq_logo.svg" alt="Logo de AtiqTec">
+            </div>
+            <h1>Innovación que te Reconoce</h1>
+            <p class="welcome-message">Te ofrecemos dos caminos para explorar el futuro.</p>
             <div class="button-container">
                 <a href="#" id="demo-btn" class="cta-button primary">PROBAR DEMO EN VIVO</a>
                 <a href="#" id="tour-btn" class="cta-button">INICIAR TOUR GUIADO</a>
             </div>
         </div>
 
-        <!-- DEMO CONTAINER (Oculto) -->
         <div id="demo-container" class="hidden">
-            <div class="video-container">
-                <video id="video" width="720" height="560" autoplay muted></video>
-                <canvas id="canvas"></canvas>
-            </div>
+            <div class="video-container"><video id="video" width="720" height="560" autoplay muted></video><canvas id="canvas"></canvas></div>
             <p id="loading-message">🚀 Cargando...</p>
             <div id="results-container"></div>
         </div>
         
-        <!-- SECCIÓN DE SERVICIOS -->
         <section id="servicios" class="page-section hidden">
             <h2 class="animate-on-scroll">Nuestros Servicios de Vanguardia</h2>
             <div class="bento-grid">
-                <!-- <<== CORRECCIÓN: EL CHATBOT ESTÁ AHORA DENTRO DEL GRID ==>> -->
-                <div class="bento-box large animate-on-scroll">
-                    <h3>Chatbots con IA Multi-agente</h3>
-                    <!-- Botpress se inyectará aquí -->
-                    <div id="chatbot-wrapper"></div> 
+                <div id="custom-chatbot-container" class="bento-box large animate-on-scroll">
+                    <div class="chat-header"><img src="img/atiq_logo.svg" alt="AtiqTec Logo"><div class="chat-title"><h3>AtiqTec AI Assistant</h3><span class="status-indicator">Conectado</span></div></div>
+                    <div id="chat-messages" class="chat-messages"></div>
+                    <form id="chat-form" class="chat-input-area"><input type="text" id="chat-input" placeholder="Escribe un mensaje..." autocomplete="off"><button type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg></button></form>
                 </div>
-                <div class="bento-box animate-on-scroll" data-tilt data-tilt-max="5">
-                    <h3>Análisis Facial y de Asistencia</h3>
-                    <p>Automatización de asistencia, mapas de calor en campus y seguridad mejorada.</p>
-                </div>
-                <div class="bento-box animate-on-scroll" data-tilt data-tilt-max="5">
-                    <h3>Desarrollo Frontend Moderno</h3>
-                    <p>Interfaces rápidas y reactivas con tecnologías como React y Next.js.</p>
-                </div>
+                <div class="bento-box animate-on-scroll" data-tilt><h3>Análisis Facial y de Asistencia</h3><p>Automatización de asistencia, mapas de calor en campus y seguridad mejorada.</p></div>
+                <div class="bento-box animate-on-scroll" data-tilt><h3>Desarrollo Frontend Moderno</h3><p>Interfaces rápidas y reactivas con tecnologías como React y Next.js.</p></div>
             </div>
         </section>
-
-        <!-- OTRAS SECCIONES DEL TOUR -->
+        
         <section id="nosotros" class="page-section hidden">
             <h2 class="animate-on-scroll">Nuestra Misión</h2>
-            <p class="mission-text animate-on-scroll">Revolucionar la tecnología aplicando innovación real en sectores clave como la educación.</p>
+            <p class="mission-text animate-on-scroll">Revolucionar la tecnología aplicando innovación real en sectores clave como la educación, a través de soluciones simples y potentes que transforman la interacción digital.</p>
         </section>
-
         <section id="contacto" class="page-section hidden">
             <h2 class="animate-on-scroll">¿Creamos Algo Increíble Juntos?</h2>
             <p class="animate-on-scroll">Hablemos de tu próximo proyecto.</p>
-            <a href="mailto:tu-email@atiqtec.com" class="cta-button primary animate-on-scroll">ENVIAR UN EMAIL</a>
+            <a href="mailto:info@atiqtec.com" class="cta-button primary animate-on-scroll">HABLEMOS</a>
         </section>
-
-        <!-- NAVEGADOR LATERAL DEL TOUR -->
         <nav id="tour-navigator" class="hidden">
-            <ul>
+             <ul>
                 <li><a class="nav-dot" data-section="servicios"></a><span>Servicios</span></li>
                 <li><a class="nav-dot" data-section="nosotros"></a><span>Nosotros</span></li>
                 <li><a class="nav-dot" data-section="contacto"></a><span>Contacto</span></li>
             </ul>
         </nav>
-
     </main>
-
-    <!-- LIBRERÍAS Y SCRIPT PRINCIPAL -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
-    <script src="https://cdn.botpress.cloud/webchat/v1/inject.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
     <script src="js/main.js"></script>
-    
-    <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" defer></script>
-    <script src="https://files.bpcontent.cloud/2025/07/30/23/20250730230628-6N33LX34.js" defer></script>
-    
-
-    <script>
-      window.botpressWebChat = {
-        "composerPlaceholder": "Chatea con AtiqTec AI",
-        "botConversationDescription": "Asistente Virtual IA",
-        "botId": "TU_BOT_ID", // Reemplaza esto
-        "hostUrl": "https://cdn.botpress.cloud/webchat/v1",
-        "messagingUrl": "https://messaging.botpress.cloud",
-        "clientId": "TU_CLIENT_ID", // Reemplaza esto
-        
-        "containerWidth": "100%",
-        "layoutWidth": "100%",
-        "hideWidget": true,
-        "showPoweredBy": false,
-        
-        // Le decimos al bot que se renderice en nuestro nuevo div
-        "rootElement": "#chatbot-wrapper" 
-      };
-    </script>
-
 </body>
 </html>
