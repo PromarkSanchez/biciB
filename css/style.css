@@ -1,0 +1,162 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; /* Hace que el scroll con anclas sea suave */ }
+body {
+    font-family: 'Segoe UI', 'Roboto', sans-serif;
+    background-color: #000000;
+    color: #ffffff;
+    overflow-x: hidden;
+    overflow-y: hidden; /* Ocultamos el scroll hasta que se activa el tour */
+}
+body.tour-active { overflow-y: auto; }
+#canvas-container { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: 1; }
+.content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s ease;
+}
+body.tour-active .content { display: block; height: auto; }
+.hidden { display: none !important; }
+.hero-section {
+    display: flex; flex-direction: column; align-items: center; text-align: center;
+    max-width: 800px; padding: 20px;
+}
+h1 { font-size: 3.5rem; font-weight: 700; margin-bottom: 20px; text-shadow: 0 0 10px rgba(0, 170, 255, 0.5); }
+.welcome-message { font-size: 1.2rem; margin-bottom: 30px; max-width: 500px; }
+#atiq-char { font-size: 2rem; display: block; margin-bottom: 10px; }
+.button-container { display: flex; gap: 20px; }
+.cta-button {
+    padding: 15px 30px; border: 2px solid #ffffff; border-radius: 50px; text-decoration: none;
+    color: #ffffff; font-weight: 600; transition: all 0.3s ease; background-color: rgba(0,0,0,0.3);
+}
+.cta-button:hover { background-color: #ffffff; color: #000000; }
+.cta-button.primary { background-color: #00aaff; border-color: #00aaff; }
+.cta-button.primary:hover { background-color: #ffffff; border-color: #ffffff; color: #00aaff; }
+#demo-container { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px; }
+.video-container {
+    position: relative; display: flex; justify-content: center; align-items: center;
+    background-color: #1a1a1a; border-radius: 10px; box-shadow: 0 0 20px rgba(0, 170, 255, 0.5);
+    overflow: hidden; max-width: 90vw;
+}
+#video { transform: scaleX(-1); max-width: 100%; height: auto; }
+#canvas { position: absolute; top: 0; left: 0; }
+#loading-message, #results-container {
+    font-size: 1.2rem; color: #00aaff; text-align: center; min-height: 25px;
+    padding: 10px; background-color: rgba(0,0,0,0.5); border-radius: 5px;
+}
+.page-section {
+    width: 100%; min-height: 100vh; display: none; flex-direction: column;
+    justify-content: center; align-items: center; padding: 100px 5%;
+    text-align: center;
+}
+body.tour-active .page-section { display: flex; } /* Mostramos las secciones en modo tour */
+h2 { font-size: 2.8rem; margin-bottom: 50px; text-shadow: 0 0 10px rgba(0, 170, 255, 0.5); }
+.bento-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px; width: 100%; max-width: 1200px;
+}
+.bento-box {
+    background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 20px; padding: 30px;
+    text-align: left; transition: transform 0.3s ease;
+}
+.bento-box:hover { transform: translateY(-10px); }
+.bento-box.large { grid-column: span 2; }
+.bento-box h3 { margin-bottom: 15px; color: #00aaff; font-size: 1.5rem; }
+.mission-text { max-width: 700px; font-size: 1.5rem; line-height: 1.6; }
+#tour-navigator {
+    position: fixed; right: 30px; top: 50%; transform: translateY(-50%); z-index: 1000;
+}
+#tour-navigator ul { list-style: none; }
+#tour-navigator li {
+    margin: 20px 0; display: flex; align-items: center; justify-content: flex-end;
+}
+#tour-navigator .nav-dot {
+    display: block; width: 12px; height: 12px; background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%; transition: all 0.3s ease; cursor: pointer;
+}
+#tour-navigator .nav-dot.active { background: #00aaff; transform: scale(1.5); }
+#tour-navigator span {
+    position: absolute; right: 25px; color: #fff; background: #000; padding: 5px 10px;
+    border-radius: 5px; opacity: 0; visibility: hidden; transition: all 0.3s ease; white-space: nowrap;
+}
+#tour-navigator li:hover span { opacity: 1; visibility: visible; }
+@media (max-width: 768px) {
+    h1 {font-size: 2.5rem;} h2 {font-size: 2.2rem;} .mission-text {font-size: 1.2rem;}
+    .bento-box.large { grid-column: span 1; } #tour-navigator { display: none; }
+}
+@media (max-width: 600px) {
+    .button-container { flex-direction: column; width: 80%; }
+    .cta-button { width: 100%; }
+}
+
+/* ======== ESTILOS PARA EL CONTENEDOR DEL CHATBOT EMBEBIDO ======== */
+#chatbot-container {
+    /* Usamos flexbox para controlar la altura y el diseño interno */
+    display: flex;
+    flex-direction: column;
+    padding: 0; /* Quitamos el padding para que el chat se pegue a los bordes */
+    height: 500px; /* Le damos una altura fija para que no colapse */
+}
+
+#chatbot-container h3 {
+    /* Le volvemos a dar un padding solo al título para que respire */
+    padding: 30px 30px 15px 30px;
+}
+
+/* Este ID lo usará el script de Botpress. Le decimos que ocupe todo el espacio disponible */
+#bp-web-widget-container {
+    flex-grow: 1; /* Esto hace que la ventana del chat llene la altura restante */
+    border-radius: 0 0 20px 20px; /* Redondeamos las esquinas inferiores */
+    overflow: hidden; /* Muy importante para mantener los bordes redondeados */
+}
+
+/* ======== ESTILO DEL BOTÓN DE VOLVER ======== */
+#back-to-home-btn {
+    position: fixed;
+    top: 30px;
+    left: 30px;
+    z-index: 2000; /* Asegurarse de que esté por encima de todo */
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+#back-to-home-btn:hover {
+    transform: scale(1.1);
+    background: rgba(255, 255, 255, 0.2);
+}
+/* Reemplaza el CSS anterior de #chatbot-container por este */
+
+/* El bento box que contiene el chat */
+.bento-box.large {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    height: 500px;
+}
+
+.bento-box.large h3 {
+    padding: 30px 30px 15px 30px;
+}
+
+/* El div donde se inyecta el chat */
+#chatbot-wrapper {
+    flex-grow: 1; /* Ocupa el espacio restante */
+    width: 100%;
+    border-radius: 0 0 20px 20px;
+    overflow: hidden; /* Mantiene los bordes redondeados */
+}
