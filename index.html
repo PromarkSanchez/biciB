@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AtiqTec - Innovación que te reconoce</title>
-    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- <<== CAMBIO CLAVE: Cargamos los 3 archivos CSS por separado ==>> -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/animations.css">
 </head>
 <body>
 
@@ -16,8 +20,18 @@
         </a>
 
         <div class="hero-section">
-             <div class="hero-logo-container">
-                <img src="img/atiq_logo.svg" alt="Logo de AtiqTec">
+             <div id="animated-logo" class="hero-logo-container">
+                <svg width="200px" height="200px" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+                    <g class="logo-rays-blue">
+                        <path fill="#090157" d="M57.05 13.59h13.9v32.43h-13.9z"/>
+                        <path fill="#090157" d="M57.05 82.41h13.9v32.43h-13.9z"/>
+                    </g>
+                    <g class="logo-rays-orange">
+                         <path fill="#e28418" d="M13.59 57.05h32.43v13.9H13.59z"/>
+                         <path fill="#e28418" d="M82.41 57.05h32.43v13.9H82.41z"/>
+                    </g>
+                    <circle class="logo-core" fill="#090157" stroke="#e28418" stroke-width="4" cx="64" cy="64" r="16"/>
+                </svg>
             </div>
             <h1>Innovación que te Reconoce</h1>
             <p class="welcome-message">Te ofrecemos dos caminos para explorar el futuro.</p>
@@ -66,6 +80,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
-    <script src="js/main.js"></script>
+
+    <!-- <<== CAMBIO CLAVE: Le decimos al navegador que nuestro JS usa módulos ==>> -->
+    <script src="js/main.js" type="module"></script>
+    
 </body>
 </html>
