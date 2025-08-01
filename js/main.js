@@ -2,6 +2,7 @@ import { init3DBackground } from './modules/background3D.js';
 import { setupChat, sendInitialChatMessage } from './modules/chatbot.js';
 import { initFaceDemo } from './modules/faceApiDemo.js';
 import { setupNavigation, initVisualEffects } from './modules/ui.js';
+import { initNeuralNetwork } from './modules/neuralNetwork.js'; 
 
 document.addEventListener('DOMContentLoaded', () => {
     // 1. DEFINICIÓN DE ELEMENTOS Y ESTADO
@@ -48,4 +49,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initVisualEffects();
     setupChat(elements, state);
     setupNavigation(elements, state, handleStartFaceDemo, handleStartTour);
+    initNeuralNetwork(); // <<< --- AÑADE ESTA LÍNEA PARA ACTIVAR LA ANIMACIÓN --- <<<
+
 });
