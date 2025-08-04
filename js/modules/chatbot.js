@@ -1,9 +1,9 @@
 // --- Configuración del Chatbot ---
 // Mueve la configuración a este objeto para facilitar las actualizaciones.
 const CHAT_CONFIG = {
-    API_URL: 'http://localhost:8000/api/v1/chat/',
-    API_KEY: 'uGwxnNYEHxObraMxqGL0jaPWcB3vZPzMkXUzm5IrfuI',
-    APP_ID: 'WEB_MATE_BASICA'
+    API_URL: 'https://admin-ia-back.cayetano.pe/api/v1/chat/',
+    API_KEY: 'f-fUWau31nWLyQox72y0RsHGiciyUsJ6plods8G2MjM',
+    APP_ID: 'atiq_web'
 };
 
 // --- Funciones Internas del Módulo ---
@@ -50,7 +50,8 @@ async function callChatApi(elements, state, messageText) {
         typingIndicator.remove();
         const botMessage = document.createElement('div');
         botMessage.className = 'chat-message bot';
-        botMessage.textContent = data.bot_response;
+        //botMessage.textContent = data.bot_response;
+        botMessage.innerHTML = marked.parse(data.bot_response);
         chatMessages.appendChild(botMessage);
         chatMessages.scrollTop = chatMessages.scrollHeight;
 

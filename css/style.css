@@ -44,6 +44,7 @@ h2 { font-size: 2.8rem; margin-bottom: 50px; text-shadow: 0 0 10px rgba(0, 0, 0,
 .bento-box:not(.large):hover { transform: translateY(-10px); }
 .bento-box.large { grid-column: span 2; display: flex; flex-direction: column; padding: 0; max-height: 70vh; min-height: 500px; overflow: hidden; }
 .chat-header { display: flex; align-items: center; gap: 15px; padding: 15px 20px; flex-shrink: 0; border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
+.chat-logo {   color: #faeeee; }
 .chat-header img { width: 40px; height: 40px; border-radius: 50%; }
 .chat-title h3 { font-size: 1.1rem; color: #000; margin: 0; padding: 0; }
 .chat-title span { font-size: 0.8rem; color: #008f5a; }
@@ -81,10 +82,33 @@ h2 { font-size: 2.8rem; margin-bottom: 50px; text-shadow: 0 0 10px rgba(0, 0, 0,
 .cta-button:hover { background-color: var(--color-naranja-vibrante); color: #fff; border-color: var(--color-naranja-vibrante); }
 .cta-button.primary { background-color: var(--color-naranja-vibrante); border-color: var(--color-naranja-vibrante); color: #fff; }
 .cta-button.primary:hover { background-color: var(--color-azul-profundo); border-color: var(--color-azul-profundo); }
+/* Busca esta sección al final de css/base.css */
+
+@media (max-width: 600px) {
+    /* Aquí tenías algunas reglas o estaba vacío */
+    /* Por ejemplo: .button-container { ... } .cta-button { ... } */
+}
+
+/* Y REEMPLÁZALA o AÑADE este bloque completo y corregido: */
+
+@media (max-width: 600px) {
+    /* --- LA SOLUCIÓN ESTÁ AQUÍ --- */
+    .button-container {
+        /* Le decimos que apile los botones verticalmente */
+        flex-direction: column; 
+        /* Le pedimos que ocupe casi todo el ancho para que los botones se vean bien */
+        width: 80%;
+        align-items: center; /* Centramos los botones en la columna */
+    }
+
+    .cta-button {
+        /* Hacemos que cada botón ocupe todo el ancho de su contenedor */
+        width: 100%; 
+    }
+}
+
 
 /* --- REEMPLÁZALO POR ESTA VERSIÓN MEJORADA --- */
-
-.button-container { display: flex; gap: 20px; margin-top: 30px; }
 
 /* Botón Secundario (Iniciar Tour) */
 .cta-button {
@@ -138,4 +162,28 @@ h2 { font-size: 2.8rem; margin-bottom: 50px; text-shadow: 0 0 10px rgba(0, 0, 0,
 .content {
     position: relative;
     z-index: 3; 
+}
+
+
+/* --- AÑADE ESTAS REGLAS NUEVAS AL FINAL DE TU CSS --- */
+
+/* Estilos para el contenido generado por Markdown dentro del chat */
+.chat-message.bot p {
+    margin: 0; /* Asegura que los párrafos no tengan márgenes extra */
+}
+
+.chat-message.bot ul,
+.chat-message.bot ol {
+    list-style-position: inside; /* ¡LA CLAVE! Mantiene las viñetas DENTRO de la burbuja */
+    padding-left: 1em;          /* Un pequeño espacio para que parezca una lista */
+    margin-top: 0.5em;          /* Espacio entre un párrafo y una lista */
+    margin-bottom: 0.5em;
+}
+
+.chat-message.bot li {
+    margin-bottom: 0.25em; /* Pequeño espacio entre los elementos de la lista */
+}
+
+.chat-message.bot strong {
+    font-weight: 600; /* Hace que la negrita resalte un poco más */
 }

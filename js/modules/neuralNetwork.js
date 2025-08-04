@@ -2,7 +2,7 @@
 
 // --- PARÁMETROS CONFIGURABLES ---
 // Juega con estos valores para cambiar la apariencia
-const NODE_COUNT = 100;
+const NODE_COUNT = window.innerWidth < 768 ? 40 : 100; // Menos nodos en pantallas pequeñas
 const NODE_RADIUS = 2;
 const MAX_LINK_DISTANCE = 150;
 const NODE_SPEED = 0.5;
@@ -72,7 +72,7 @@ function draw() {
     nodes.forEach(node => {
         ctx.beginPath();
         ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(239, 238, 197, 0.8)`; // Color crema de tu paleta
+        ctx.fillStyle = `rgba(28, 31, 206, 0.8)`; // Color crema de tu paleta
         ctx.fill();
     });
 }
