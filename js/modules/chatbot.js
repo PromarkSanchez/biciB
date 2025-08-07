@@ -1,8 +1,8 @@
 // --- Configuración del Chatbot ---
 // Mueve la configuración a este objeto para facilitar las actualizaciones.
 const CHAT_CONFIG = {
-    API_URL: 'https://admin-ia-back.cayetano.pe/api/v1/chat/',
-    API_KEY: 'f-fUWau31nWLyQox72y0RsHGiciyUsJ6plods8G2MjM',
+    API_URL: 'https://chatbot.atiqtec.com/api/v1/chat/',
+    API_KEY: 'mSMM84EsU9B_Fa7d0yhO4_Kn80QX7O0kFMyZTA3XRB4',
     APP_ID: 'atiq_web'
 };
 
