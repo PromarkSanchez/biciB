@@ -2,7 +2,7 @@
 // Mueve la configuración a este objeto para facilitar las actualizaciones.
 const CHAT_CONFIG = {
     API_URL: 'https://chatbot.atiqtec.com/api/v1/chat/',
-    API_KEY: 'zA-oCnWPYVykV5WEpq5uba0q4tvFTgO9LJFSlAHQXBU',
+    API_KEY: 'p9AYn8V6u-vanzlrtjBTSwoFXaIfteBDT1vbdVWuxY8',
     APP_ID: 'atiq_web'
 };
 
