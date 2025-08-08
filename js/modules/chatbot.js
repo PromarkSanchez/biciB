@@ -6,7 +6,7 @@ const CHAT_CONFIG = {
     APP_ID: 'atiq_web'
 };
 
-// --- Funciones Internas del Módulo ---
+// --- Funciones Internas del Módulo -----
 
 /**
  * Llama a la API del chatbot y muestra la respuesta.
